@@ -10,23 +10,33 @@ namespace Domain.VideoGamePlayers
     {
         Random r = new Random();
 
-        //имя персонажа
+        /// <summary>
+        /// Имя персонажа
+        /// </summary>
         public abstract string Name { get; }
         //максимальное здоровье
-        public int N;
+        private int N;
         //левый порог урона
-        public int M;
+        private int M;
         //количество раз, которое можно исцелиться
-        public int countHealth = 4;
+        private int countHealth = 4;
         /* set => health += (int)(N * 0.3); */
 
-        //атака
+        /// <summary>
+        /// Параметр атаки
+        /// </summary>
         public int attack;
-        //защита
+        /// <summary>
+        /// Параметр защиты
+        /// </summary>
         public int defense;
-        //здоровье
+        /// <summary>
+        /// Параметр здоровья
+        /// </summary>
         public int health;
-        //урон
+        /// <summary>
+        /// Параметр урона
+        /// </summary>
         public int[] damage;
 
         public VideoGamePlayer()
@@ -37,15 +47,25 @@ namespace Domain.VideoGamePlayers
             this.defense = r.Next(1, 30);
             this.health = r.Next(0, N);
             this.damage = Enumerable.Range(M, 6).ToArray();
-        }       
-
+        }
+        /// <summary>
+        /// Функция, определяющая, может ли персонаж исцелиться
+        /// </summary>
         public bool CanBeHealed()
         {
             if (countHealth > 0) return true;
             else return false;
         }
-
-
+        /// <summary>
+        /// Функция исцеления
+        /// </summary>
+        public void Heal()
+        {
+            int healing = (int)(N * 0.3);
+            Console.WriteLine("исцеление на " + healing.ToString() + "здоровье = " + this.health.ToString());
+            this.health += healing;
+            this.countHealth--;
+        }
     }
 
 }

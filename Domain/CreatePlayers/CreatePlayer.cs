@@ -9,6 +9,9 @@ namespace Domain.CreatePlayers
 {
     abstract class CreatePlayer
     {
+        /// <summary>
+        /// Создание персонажа
+        /// </summary>
         abstract public VideoGamePlayer Create();
     }
 }

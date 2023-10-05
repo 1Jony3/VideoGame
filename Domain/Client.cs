@@ -20,6 +20,7 @@ namespace Domain
             VideoGamePlayer monster = player.Create();
 
             Fighting fighting = new Fighting(hero, monster);
+            fighting.Fight();
 
             Console.ReadLine();
         }
