@@ -19,6 +19,8 @@ namespace Domain
             player = new CreateMonster();
             VideoGamePlayer monster = player.Create();
 
+            Fighting fighting = new Fighting(hero, monster);
+
             Console.ReadLine();
         }
     }

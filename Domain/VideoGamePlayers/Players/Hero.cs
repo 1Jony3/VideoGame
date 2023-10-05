@@ -8,8 +8,8 @@ namespace Domain.VideoGamePlayers.Players
 {
     class Hero : VideoGamePlayer
     {
-        public string Name => "Hero";
-        public Hero()
+        public override string Name => "Hero";
+        public Hero(): base()
         {
             Console.WriteLine(Name + "[");
             Console.WriteLine("Attack = " + attack);

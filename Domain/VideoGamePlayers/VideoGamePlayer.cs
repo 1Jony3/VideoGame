@@ -9,26 +9,35 @@ namespace Domain.VideoGamePlayers
     public abstract class VideoGamePlayer
     {
         Random r = new Random();
-        //имя персонажа
-        public string Name { get; }
-        //максимальное здоровье
-        public int N => r.Next(5, 50);
-        //левый порог урона
-        public int M => r.Next(1, N - 1);
-        //количество раз, которое можно исцелиться
-        public int countHealth => 4;
 
+        //имя персонажа
+        public abstract string Name { get; }
+        //максимальное здоровье
+        public int N;
+        //левый порог урона
+        public int M;
+        //количество раз, которое можно исцелиться
+        public int countHealth = 4;
+        /* set => health += (int)(N * 0.3); */
 
         //атака
-        public int attack => r.Next(1, 30);
+        public int attack;
         //защита
-        public int defense => r.Next(1, 30);
+        public int defense;
         //здоровье
-        public int health 
-    get => r.Next           set => health += (int)(N * 0.3); 
-        }
+        public int health;
         //урон
-        public int[] damage => Enumerable.Range(M, 6).ToArray(); 
+        public int[] damage;
+
+        public VideoGamePlayer()
+        {
+            this.N = r.Next(5, 50);
+            this.M = r.Next(1, N - 1);
+            this.attack = r.Next(1, 30);
+            this.defense = r.Next(1, 30);
+            this.health = r.Next(0, N);
+            this.damage = Enumerable.Range(M, 6).ToArray();
+        }       
 
         public bool CanBeHealed()
         {
